@@ -77,21 +77,21 @@ pipeline{
 
                         def nexusRepo = readPomVersion.version.endsWith("SNAPSHOT") ? "cicd-snapshot" : "cicd"
                         nexusArtifactUploader artifacts: 
-                        [
                             [
-                                artifactId: 'springboot',
-                                classifier: '',
-                                file: 'target/Uber.jar',
+                            [
+                                artifactId: 'springboot', 
+                                classifier: '', 
+                                file: 'target/Uber.jar', 
                                 type: 'jar'
                             ]
-                        ], 
+                            ], 
                             credentialsId: 'nexus-auth', 
                             groupId: 'com.example', 
-                            nexusUrl: '35.224.126.96:8081', 
+                            nexusUrl: '35.224.247.13:8081', 
                             nexusVersion: 'nexus3', 
                             protocol: 'http', 
-                            repository: nexusRepo, 
-                            version: "${readPomVersion.version}"
+                            repository: 'app-repo', 
+                            version: '2.0.2'
                     }
 
                 }
