@@ -112,9 +112,10 @@ pipeline{
                         withCredentials([string(credentialsId: 'docker-pass', variable: 'docker-cred')]) {
              
                             sh 'docker login -u sam3ctc -p ${docker-cred}'
+                        } 
                             sh 'docker image push sam3ctc/$JOB_NAME:v1.$BUILD_ID'
                             sh 'docker image push sam3ctc/$JOB_NAME:latest'
-                        }   
+                          
                     }
                 }
             }
