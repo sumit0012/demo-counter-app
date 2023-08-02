@@ -109,9 +109,9 @@ pipeline{
             stage('Push Image to Docker Hub'){
                 steps{
                     script{
-                        withCredentials([string(credentialsId: 'docker-pass', variable: 'Docker-Auth')]) {
+                        withCredentials([usernameColonPassword(credentialsId: 'docker-hub', variable: 'docker-auth')]) {
              
-                            sh 'docker login -u sam3ctc -p ${Docker-Auth}'
+                            sh 'docker login -u sam3ctc -p ${docker-auth}'
                             sh 'docker image push sam3ctc/$JOB_NAME:v1.$BUILD_ID'
                             sh 'docker image push sam3ctc/$JOB_NAME:latest'
                         }   
