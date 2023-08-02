@@ -110,8 +110,8 @@ pipeline{
                 steps{
                     script{
                         withCredentials([string(credentialsId: 'docker-pass', variable: 'Docker-Auth')]) {
-                            
-                            sh 'docker login -u sam3ctc -p ${docker_hub}'
+             
+                            sh 'docker login -u sam3ctc -p ${Docker-Auth}'
                             sh 'docker image push sam3ctc/$JOB_NAME:v1.$BUILD_ID'
                             sh 'docker image push sam3ctc/$JOB_NAME:latest'
                         }   
